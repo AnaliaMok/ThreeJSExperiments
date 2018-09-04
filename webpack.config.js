@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     main: [
       './src/Helpers/helper.js',
+      './src/Helpers/geometries.js',
       './src/main.js'
     ]
   },
