@@ -20,7 +20,7 @@ function init() {
   var renderer = new THREE.WebGLRenderer();
   //renderer.shadowMap.enabled = true;
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor('rgb(43, 49, 62)'); // Background color
+  renderer.setClearColor('rgb(23, 29, 42)'); // Background color
 
   // Binding renderer to div
   document.getElementById('webgl').appendChild(renderer.domElement);
@@ -42,6 +42,7 @@ function update(renderer, scene, camera, controls){
 
   // Object Animations
   var particleSystem = scene.getObjectByName('particleSystem');
+  particleSystem.rotation.x += 0.003;
   particleSystem.rotation.y += 0.005;
 
   requestAnimationFrame(function() {

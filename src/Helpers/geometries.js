@@ -29,7 +29,7 @@ function createParticleSystem(){
 	});
 
   // Geometry
-  var particleGeo = new SphereGeometry(10, 50, 50);
+  var particleGeo = new SphereGeometry(15, 50, 50);
 
 	// Adding randomness to the location of the vertices
 	particleGeo.vertices.forEach(function(vertex){
