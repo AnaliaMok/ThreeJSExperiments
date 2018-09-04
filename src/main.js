@@ -2,9 +2,11 @@ import * as THREE from 'three';
 import OrbitControls from 'three-orbitcontrols';
 import { getSphere, createParticleSystem } from './Helpers/geometries';
 import { getAmbientLight, getSpotLight } from './Helpers/lighting';
+import * as datgui from 'dat.gui';
 
 function init() {
   var scene = new THREE.Scene();
+  var gui = new datgui.GUI();
 
   // Creating Scene
   setupScene(scene);
@@ -12,9 +14,15 @@ function init() {
   // Camera
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 1, 1000);
 	camera.position.x = 0;
-	camera.position.y = 20;
-  camera.position.z = 30;
-	camera.lookAt(new THREE.Vector3(0, 0, 0));
+	camera.position.y = 17;
+  camera.position.z = 0;
+  camera.lookAt(new THREE.Vector3(0, 10, 0));
+
+  // Camera Controls
+  var cameraPosFolder = gui.addFolder('Camera Position');
+  cameraPosFolder.add(camera.position, 'x', 0, 25);
+  cameraPosFolder.add(camera.position, 'y', 0, 25);
+  cameraPosFolder.add(camera.position, 'z', 0, 25);
 
   // Renderer
   var renderer = new THREE.WebGLRenderer();
@@ -42,7 +50,7 @@ function update(renderer, scene, camera, controls){
 
   // Object Animations
   var particleSystem = scene.getObjectByName('particleSystem');
-  particleSystem.rotation.x += 0.003;
+  // particleSystem.rotation.x += 0.002;
   particleSystem.rotation.y += 0.005;
 
   requestAnimationFrame(function() {

@@ -1,13 +1,13 @@
-import { AmbientLight } from 'three';
+import { AmbientLight, SpotLight } from 'three';
 
 function getAmbientLight(intensity){
-  var light = new THREE.AmbientLight('rgb(10, 30, 50)', intensity);
+  var light = new AmbientLight('rgb(10, 30, 50)', intensity);
   // Doesn't cast any shadows
   return light;
 }
 
 function getSpotLight(intensity){
-  var light = new THREE.SpotLight(0xffffff, intensity);
+  var light = new SpotLight(0xffffff, intensity);
   light.castShadow = true;
 
   // Highly dependent of scale of scene
