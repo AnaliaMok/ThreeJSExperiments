@@ -1,8 +1,13 @@
 import * as THREE from 'three';
 import OrbitControls from 'three-orbitcontrols';
+import { getSphere, createParticleSystem } from './Helpers/geometries';
+import { getAmbientLight, getSpotLight } from './Helpers/lighting';
 
 function init() {
   var scene = new THREE.Scene();
+
+  // Creating Scene
+  setupScene(scene);
 
   // Camera
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 1, 1000);
@@ -15,7 +20,7 @@ function init() {
   var renderer = new THREE.WebGLRenderer();
   //renderer.shadowMap.enabled = true;
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor('rgb(120, 120, 120)'); // Background color
+  renderer.setClearColor('rgb(43, 49, 62)'); // Background color
 
   // Binding renderer to div
   document.getElementById('webgl').appendChild(renderer.domElement);
@@ -35,9 +40,22 @@ function update(renderer, scene, camera, controls){
   // ELement Updates
   controls.update();
 
+  // Object Animations
+  var particleSystem = scene.getObjectByName('particleSystem');
+  particleSystem.rotation.y += 0.005;
+
   requestAnimationFrame(function() {
 		update(renderer, scene, camera, controls);
 	});
+}
+
+/**
+ * Creates & Adds objects to scene
+ * @param {THREE.Scene} scene
+ */
+function setupScene(scene){
+  const particleSystem = createParticleSystem();
+  scene.add(particleSystem);
 }
 
 var scene = init();
