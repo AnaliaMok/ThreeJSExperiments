@@ -1,0 +1,15 @@
+{
+  "name": "ThreeJSExperiments",
+  "version": "1.0.0",
+  "description": "Dependencies for an experimental Three.js project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Analia Mok",
+  "license": "ISC",
+  "devDependencies": {
+    "three": "^0.96.0"
+  }
+}
